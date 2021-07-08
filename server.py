@@ -18,17 +18,10 @@ log = False
 s = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
 s.bind((host,port))
 
-a = input("Loging? [Y/n]")
-if a == "y" or a == "Y" or a == "д"  or a == "Д":
-	log = True
-else:
-	log = False
+log = True
 
-a = input("Enable white list? [Y/n]")
-if a == "y" or a == "Y" or a == "д"  or a == "Д":
-	whitelist_eneable = True
-else:
-	whitelist_enable = False
+whitelist_eneable = True
+
 a = 0
 
 quit = False
@@ -81,13 +74,8 @@ while not quit:
 					print(data.decode("utf-8"))
 
 				if data0[0] == "ADMIN":
-					a = input("Set admin? [Y/n]")
-					if a == "y" or a == "Y" or a == "д"  or a == "Д":
 						admins.append(addr)
 						s.sendto(bytes("y", encoding="UTF-8"), addr)
-					else:
-						s.sendto(bytes("n", encoding="UTF-8"), addr)
-
 				a = 0
 
 				if data0[0] == "POST":
